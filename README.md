@@ -1,0 +1,2 @@
+# dotfiles
+bash config file
