@@ -4,4 +4,6 @@ bash config file
 </br>
 sudo vim ~/.bashrc 
 </br>
+chmod 600 ~/.bashrc #设置权限
+</br>
 source ~/.bashrc
