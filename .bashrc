@@ -19,3 +19,20 @@ gacp() {
   echo "正在推送到远程仓库..."
   git push
 }
+
+# 设置代理
+setproxy() {
+    export ALL_PROXY="http://172.30.128.1:7890"
+    # 可选：同时设置其他协议的代理
+    export http_proxy=$ALL_PROXY
+    export https_proxy=$ALL_PROXY
+    echo "代理已设置为: $ALL_PROXY"
+}
+
+# 清除代理（可选，方便快速关闭）
+unsetproxy() {
+    unset ALL_PROXY
+    unset http_proxy
+    unset https_proxy
+    echo "代理已清除"
+}
