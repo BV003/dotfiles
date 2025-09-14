@@ -9,6 +9,8 @@ Welcome to my personal dotfiles repository! This collection contains my Linux/ma
 - Shell: My configuration for the Bash shell, including custom command aliases, functions, and a personalized prompt.
 - Tools: This includes configurations for common development tools like Git.
 - gacp "" : 快速提交commit
+- setproxy
+- unsetproxy
 
 ### 📦 Contents
 
