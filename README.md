@@ -24,6 +24,7 @@ You do not need to use git for updates; you can manually update the file.
 - Open the file with vim
 ```
 sudo vim ~/.bashrc
+sudo vim ~/.zshrc
 ```
 - Set permission
 ```
