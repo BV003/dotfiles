@@ -6,31 +6,23 @@ Welcome to my personal dotfiles repository! This collection contains my Linux/ma
 
 ### ✨ Features
 
-- Shell: My configuration for the Bash shell, including custom command aliases, functions, and a personalized prompt.
-- Tools: This includes configurations for common development tools like Git.
-- gacp "" : git add+commit+push
-- setproxy
-- unsetproxy
+- gacp "message": git add + commit + push
+- gd: show all changes, including new files
+- hp: pick a project and open it as a herdr space
+- setproxy / unsetproxy: turn the Clash proxy on / off
 
 ### 📦 Contents
 
-This repository contains the following main configuration file:
-- ~ /.bashrc - Bash shell configuration
+- shell.sh: shell functions, works in both zsh and bash
 
 ### 🚀  Installation
 
-Here's how to install and configure dotfiles:  
-You do not need to use git for updates; you can manually update the file.
-- Open the file with vim
 ```
-sudo vim ~/.bashrc
-sudo vim ~/.zshrc
+git clone https://github.com/BV003/dotfiles ~/dotfiles
 ```
-- Set permission
+
+Add this line to `~/.zshrc` (macOS) or `~/.bashrc` (Linux):
+
 ```
-chmod 600 ~/.bashrc
-```
-- Apply the changes
-```
-source ~/.bashrc
+source ~/dotfiles/shell.sh
 ```
