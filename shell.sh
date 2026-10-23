@@ -18,6 +18,14 @@ gd() {
   git add -N . && git diff "$@"
 }
 
+gdrop() {
+  git add -N . && git diff --stat
+  printf "Discard all of this? [y/N] "
+  read -r ans
+  [ "$ans" = "y" ] || return
+  git restore . && git reset -q && git clean -fd
+}
+
 hp() {
   local dir name id
   dir=$( (ls -d ~/Documents/codehome/*/; echo ~/.config/nvim) | fzf --prompt="project> ") || return

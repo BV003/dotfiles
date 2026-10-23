@@ -8,6 +8,7 @@ Welcome to my personal dotfiles repository! This collection contains my Linux/ma
 
 - gacp "message": git add + commit + push
 - gd: show all changes, including new files
+- gdrop: discard all changes, including new files (asks first)
 - hp: pick a project and open it as a herdr space
 - setproxy / unsetproxy: turn the Clash proxy on / off
 
