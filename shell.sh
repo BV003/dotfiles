@@ -26,9 +26,28 @@ gdrop() {
   git restore . && git reset -q && git clean -fd
 }
 
+# Same project list as nvim's <leader>p: read from ~/.config/nvim/lua/config/local.lua
+_hp_projects() {
+  nvim --clean -l <(cat <<'LUA'
+local ok, c = pcall(dofile, vim.fn.expand("~/.config/nvim/lua/config/local.lua"))
+if not ok or type(c) ~= "table" then c = {} end
+local out = {}
+for _, root in ipairs(c.project_roots or {}) do
+  for _, d in ipairs(vim.fn.globpath(vim.fn.expand(root), "*/", false, true)) do
+    table.insert(out, vim.fn.fnamemodify((d:gsub("/$", "")), ":~"))
+  end
+end
+table.insert(out, "~/.config/nvim")
+for _, d in ipairs(c.projects or {}) do table.insert(out, d) end
+io.write(table.concat(out, "\n"), "\n")
+LUA
+)
+}
+
 hp() {
   local dir name id
-  dir=$( (ls -d ~/Documents/codehome/*/; echo ~/.config/nvim) | fzf --prompt="project> ") || return
+  dir=$(_hp_projects | fzf --prompt="project> ") || return
+  dir=${dir/#\~/$HOME}
   dir=${dir%/}
   name=$(basename "$dir")
   id=$(herdr workspace list | jq -r --arg n "$name" '.result.workspaces[] | select(.label==$n) | .workspace_id' | head -1)
