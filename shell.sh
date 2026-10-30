@@ -15,15 +15,15 @@ gacp() {
 }
 
 gd() {
-  git add -N . && git diff "$@"
+  git add -N . && git diff HEAD "$@"
 }
 
 gdrop() {
-  git add -N . && git diff --stat
+  git add -N . && git diff HEAD --stat
   printf "Discard all of this? [y/N] "
   read -r ans
   [ "$ans" = "y" ] || return
-  git restore . && git reset -q && git clean -fd
+  git reset -q && git restore . && git clean -fd
 }
 
 # Same project list as nvim's <leader>p: read from ~/.config/nvim/lua/config/local.lua
